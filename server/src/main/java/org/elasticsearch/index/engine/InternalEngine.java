@@ -905,6 +905,7 @@ public class InternalEngine extends Engine {
         return localCheckpointTracker.generateSeqNo();
     }
 
+    // TODO wj index entry
     @Override
     public IndexResult index(Index index) throws IOException {
         assert Objects.equals(index.uid().field(), IdFieldMapper.NAME) : index.uid().field();
