@@ -1160,6 +1160,7 @@ public class InternalEngine extends Engine {
         return plan;
     }
 
+    // TODO wj index into lucene
     private IndexResult indexIntoLucene(Index index, IndexingStrategy plan) throws IOException {
         assert index.seqNo() >= 0 : "ops should have an assigned seq no.; origin: " + index.origin();
         assert plan.versionForIndexing >= 0 : "version must be set. got " + plan.versionForIndexing;
