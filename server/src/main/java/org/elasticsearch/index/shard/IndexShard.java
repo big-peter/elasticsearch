@@ -879,6 +879,7 @@ public class IndexShard extends AbstractIndexShardComponent implements IndicesCl
         return previousState;
     }
 
+    // TODO wj index entry
     public Engine.IndexResult applyIndexOperationOnPrimary(
         long version,
         VersionType versionType,

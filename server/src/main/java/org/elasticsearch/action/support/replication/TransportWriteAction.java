@@ -192,6 +192,7 @@ public abstract class TransportWriteAction<
         return new WriteActionReplicasProxy();
     }
 
+    // TODO wj lucene
     /**
      * Called on the primary with a reference to the primary {@linkplain IndexShard} to modify.
      *

@@ -162,6 +162,7 @@ public class TransportShardBulkAction extends TransportWriteAction<BulkShardRequ
         return request.items().length;
     }
 
+    // TODO wj
     public static void performOnPrimary(
         BulkShardRequest request,
         IndexShard primary,
