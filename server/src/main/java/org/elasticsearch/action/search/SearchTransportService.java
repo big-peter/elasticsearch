@@ -435,6 +435,7 @@ public class SearchTransportService {
         }
     }
 
+    // TODO wj search handler
     public static void registerRequestHandler(TransportService transportService, SearchService searchService) {
         transportService.registerRequestHandler(
             FREE_CONTEXT_SCROLL_ACTION_NAME,
