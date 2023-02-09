@@ -198,6 +198,7 @@ public class QueryPhase {
         }
     }
 
+    // TODO wj search
     private static boolean searchWithCollector(
         SearchContext searchContext,
         ContextIndexSearcher searcher,

@@ -612,6 +612,7 @@ public abstract class Engine implements Closeable {
         return acquireSearcherSupplier(wrapper, SearcherScope.EXTERNAL);
     }
 
+    // TODO wj acquire point-in-time reader
     /**
      * Acquires a point-in-time reader that can be used to create {@link Engine.Searcher}s on demand.
      */

@@ -243,6 +243,8 @@ public class InternalEngine extends Engine {
                     throw e;
                 }
             }
+
+            // TODO wj create Reader Manager
             externalReaderManager = createReaderManager(new RefreshWarmerListener(logger, isClosed, engineConfig));
             internalReaderManager = externalReaderManager.internalReaderManager;
             this.internalReaderManager = internalReaderManager;

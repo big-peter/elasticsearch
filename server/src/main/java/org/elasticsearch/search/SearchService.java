@@ -699,6 +699,7 @@ public class SearchService extends AbstractLifecycleComponent implements IndexEv
         }, wrapFailureListener(listener, readerContext, markAsUsed));
     }
 
+    // TODO wj query
     public void executeQueryPhase(QuerySearchRequest request, SearchShardTask task, ActionListener<QuerySearchResult> listener) {
         final ReaderContext readerContext = findReaderContext(request.contextId(), request.shardSearchRequest());
         final ShardSearchRequest shardSearchRequest = readerContext.getShardSearchRequest(request.shardSearchRequest());
