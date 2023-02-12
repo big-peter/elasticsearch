@@ -982,6 +982,7 @@ public abstract class Engine implements Closeable {
         return false;
     }
 
+    // TODO wj refresh
     /**
      * Synchronously refreshes the engine for new search operations to reflect the latest
      * changes.
