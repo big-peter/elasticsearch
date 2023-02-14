@@ -427,6 +427,7 @@ public class ThreadPool implements ReportingService<ThreadPoolInfo>, Scheduler {
         final Runnable contextPreservingRunnable = threadContext.preserveContext(command);
         final Runnable toSchedule;
         if (Names.SAME.equals(executor) == false) {
+            // use specific executor to execute task
             toSchedule = new ThreadedRunnable(contextPreservingRunnable, executor(executor));
         } else if (slowSchedulerWarnThresholdNanos > 0) {
             toSchedule = new Runnable() {
@@ -562,6 +563,7 @@ public class ThreadPool implements ReportingService<ThreadPoolInfo>, Scheduler {
         return ((allocatedProcessors * 3) / 2) + 1;
     }
 
+    // use executor to execute task
     static class ThreadedRunnable implements Runnable {
 
         private final Runnable runnable;

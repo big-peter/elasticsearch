@@ -672,6 +672,7 @@ public class IndicesService extends AbstractLifecycleComponent
         }
     }
 
+    // TODO wj create index
     /**
      * This creates a new IndexService without registering it
      */

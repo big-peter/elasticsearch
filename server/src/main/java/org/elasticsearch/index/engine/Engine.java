@@ -626,6 +626,7 @@ public abstract class Engine implements Closeable {
         Releasable releasable = store::decRef;
         try {
             ReferenceManager<ElasticsearchDirectoryReader> referenceManager = getReferenceManager(scope);
+            // TODO get nrt DirectoryReader
             ElasticsearchDirectoryReader acquire = referenceManager.acquire();
             SearcherSupplier reader = new SearcherSupplier(wrapper) {
                 @Override

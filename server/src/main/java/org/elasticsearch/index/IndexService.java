@@ -238,11 +238,15 @@ public class IndexService extends AbstractIndexComponent implements IndicesClust
         this.directoryFactory = directoryFactory;
         this.recoveryStateFactory = recoveryStateFactory;
         this.engineFactory = Objects.requireNonNull(engineFactory);
+
         // initialize this last -- otherwise if the wrapper requires any other member to be non-null we fail with an NPE
         this.readerWrapper = wrapperFactory.apply(this);
         this.searchOperationListeners = Collections.unmodifiableList(searchOperationListeners);
         this.indexingOperationListeners = Collections.unmodifiableList(indexingOperationListeners);
+
         // kick off async ops for the first shard in this index
+
+        // submit refresh task
         this.refreshTask = new AsyncRefreshTask(this);
         this.trimTranslogTask = new AsyncTrimTranslogTask(this);
         this.globalCheckpointTask = new AsyncGlobalCheckpointTask(this);
@@ -897,6 +901,7 @@ public class IndexService extends AbstractIndexComponent implements IndicesClust
     }
 
     private void maybeRefreshEngine(boolean force) {
+        // refreshInterval < 0 represent disabled
         if (indexSettings.getRefreshInterval().millis() > 0 || force) {
             for (IndexShard shard : this.shards.values()) {
                 try {
@@ -1022,6 +1027,7 @@ public class IndexService extends AbstractIndexComponent implements IndicesClust
     static final class AsyncRefreshTask extends BaseAsyncTask {
 
         AsyncRefreshTask(IndexService indexService) {
+            // refresh interval
             super(indexService, indexService.getIndexSettings().getRefreshInterval());
         }
 

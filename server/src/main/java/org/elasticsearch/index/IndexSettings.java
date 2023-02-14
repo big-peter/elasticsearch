@@ -250,6 +250,8 @@ public final class IndexSettings {
         Property.Dynamic,
         Property.IndexScope
     );
+
+    // default refresh every 1 seconds
     public static final TimeValue DEFAULT_REFRESH_INTERVAL = new TimeValue(1, TimeUnit.SECONDS);
     public static final Setting<TimeValue> INDEX_REFRESH_INTERVAL_SETTING = Setting.timeSetting(
         "index.refresh_interval",
@@ -688,6 +690,7 @@ public final class IndexSettings {
         this(indexMetadata, nodeSettings, IndexScopedSettings.DEFAULT_SCOPED_SETTINGS);
     }
 
+    // TODO wj index setting
     /**
      * Creates a new {@link IndexSettings} instance. The given node settings will be merged with the settings in the metadata
      * while index level settings will overwrite node settings.
