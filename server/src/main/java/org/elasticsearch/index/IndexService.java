@@ -1018,6 +1018,7 @@ public class IndexService extends AbstractIndexComponent implements IndicesClust
         }
     }
 
+    // TODO wj refresh task
     static final class AsyncRefreshTask extends BaseAsyncTask {
 
         AsyncRefreshTask(IndexService indexService) {

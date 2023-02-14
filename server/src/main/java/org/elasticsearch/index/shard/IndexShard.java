@@ -3753,6 +3753,7 @@ public class IndexShard extends AbstractIndexShardComponent implements IndicesCl
         return replicationTracker;
     }
 
+    // TODO wj scheduled refresh
     /**
      * Executes a scheduled refresh if necessary.
      *
