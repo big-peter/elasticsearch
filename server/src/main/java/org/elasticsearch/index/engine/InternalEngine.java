@@ -1799,6 +1799,7 @@ public class InternalEngine extends Engine {
         return refresh(source, SearcherScope.EXTERNAL, false);
     }
 
+    // WJ refresh entry
     final boolean refresh(String source, SearcherScope scope, boolean block) throws EngineException {
         // both refresh types will result in an internal refresh but only the external will also
         // pass the new reader reference to the external reader manager.
