@@ -148,6 +148,7 @@ final class DefaultSearchContext extends SearchContext {
         this.indexService = readerContext.indexService();
         this.indexShard = readerContext.indexShard();
 
+        // get searcher
         Engine.Searcher engineSearcher = readerContext.acquireSearcher("search");
         this.searcher = new ContextIndexSearcher(
             engineSearcher.getIndexReader(),

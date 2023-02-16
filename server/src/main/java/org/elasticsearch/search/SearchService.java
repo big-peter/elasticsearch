@@ -616,7 +616,9 @@ public class SearchService extends AbstractLifecycleComponent implements IndexEv
         executor.execute(ActionRunnable.supply(listener, executable::get));
     }
 
+    // TODO wj query entry
     private SearchPhaseResult executeQueryPhase(ShardSearchRequest request, SearchShardTask task) throws Exception {
+        // create searcher
         final ReaderContext readerContext = createOrGetReaderContext(request);
         try (
             Releasable ignored = readerContext.markAsUsed(getKeepAlive(request));
@@ -863,6 +865,7 @@ public class SearchService extends AbstractLifecycleComponent implements IndexEv
             final long keepAliveInMillis = getKeepAlive(request);
             final IndexService indexService = indicesService.indexServiceSafe(request.shardId().getIndex());
             final IndexShard shard = indexService.getShard(request.shardId().id());
+            // get searcher supplier
             final Engine.SearcherSupplier searcherSupplier = shard.acquireSearcherSupplier();
             return createAndPutReaderContext(request, indexService, shard, searcherSupplier, keepAliveInMillis);
         }
