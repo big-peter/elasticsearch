@@ -154,6 +154,7 @@ final class Bootstrap {
         FileSystemNatives.init();
     }
 
+    // 探测工具启动
     static void initializeProbes() {
         // Force probes to be loaded
         ProcessProbe.getInstance();
@@ -227,6 +228,7 @@ final class Bootstrap {
             throw new BootstrapException(e);
         }
 
+        // 创建node
         node = new Node(environment) {
             @Override
             protected void validateNodeBeforeAcceptingRequests(

@@ -300,6 +300,7 @@ public class Node implements Closeable {
         this(environment, PluginsService.getPluginsServiceCtor(environment), true);
     }
 
+    // TODO wj node入口
     /**
      * Constructs a node
      *
@@ -410,6 +411,8 @@ public class Node implements Closeable {
             for (final ExecutorBuilder<?> builder : threadPool.builders()) {
                 additionalSettings.addAll(builder.getRegisteredSettings());
             }
+
+            // 创建nodeClient，用来在本机执行命令
             client = new NodeClient(settings, threadPool);
 
             final ScriptModule scriptModule = new ScriptModule(settings, pluginsService.filterPlugins(ScriptPlugin.class));
@@ -534,6 +537,7 @@ public class Node implements Closeable {
             IndicesModule indicesModule = new IndicesModule(pluginsService.filterPlugins(MapperPlugin.class));
             modules.add(indicesModule);
 
+            // 熔断相关
             List<BreakerSettings> pluginCircuitBreakers = pluginsService.filterPlugins(CircuitBreakerPlugin.class)
                 .stream()
                 .map(plugin -> plugin.getCircuitBreaker(settings))
@@ -550,6 +554,7 @@ public class Node implements Closeable {
             resourcesToClose.add(circuitBreakerService);
             modules.add(new GatewayModule());
 
+            // Page cache 相关
             PageCacheRecycler pageCacheRecycler = createPageCacheRecycler(settings);
             BigArrays bigArrays = createBigArrays(pageCacheRecycler, circuitBreakerService);
             modules.add(settingsModule);
@@ -601,6 +606,7 @@ public class Node implements Closeable {
             rerouteServiceReference.set(rerouteService);
             clusterService.setRerouteService(rerouteService);
 
+            // 创建索引服务
             final IndicesService indicesService = new IndicesService(
                 settings,
                 pluginsService,
@@ -695,6 +701,8 @@ public class Node implements Closeable {
             );
             modules.add(actionModule);
 
+            // 网络相关
+            // rest api controller
             final RestController restController = actionModule.getRestController();
             final NetworkModule networkModule = new NetworkModule(
                 settings,

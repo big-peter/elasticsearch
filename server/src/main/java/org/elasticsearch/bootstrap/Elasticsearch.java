@@ -35,6 +35,7 @@ import static org.elasticsearch.bootstrap.BootstrapInfo.USER_EXCEPTION_MARKER;
  */
 class Elasticsearch {
 
+    // 服务启动入口
     /**
      * Main entry point for starting elasticsearch
      */
