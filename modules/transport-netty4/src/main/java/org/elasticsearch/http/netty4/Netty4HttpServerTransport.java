@@ -292,6 +292,7 @@ public class Netty4HttpServerTransport extends AbstractHttpServerTransport {
             this.handlingSettings = handlingSettings;
         }
 
+        // server 端netty初始化
         @Override
         protected void initChannel(Channel ch) throws Exception {
             Netty4HttpChannel nettyHttpChannel = new Netty4HttpChannel(ch);

@@ -198,6 +198,7 @@ public class Netty4Transport extends TcpTransport {
         return bootstrap;
     }
 
+    // netty启动入口
     private void createServerBootstrap(ProfileSettings profileSettings, SharedGroupFactory.SharedGroup sharedGroupForServerBootstrap) {
         String name = profileSettings.profileName;
         if (logger.isDebugEnabled()) {

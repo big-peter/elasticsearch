@@ -106,6 +106,7 @@ public final class NetworkModule {
     private final Map<String, Supplier<HttpServerTransport>> transportHttpFactories = new HashMap<>();
     private final List<TransportInterceptor> transportInterceptors = new ArrayList<>();
 
+    // 网络相关模块
     /**
      * Creates a network module that custom networking classes can be plugged into.
      * @param settings The settings for the node
