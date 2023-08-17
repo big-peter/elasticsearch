@@ -297,6 +297,7 @@ public class Netty4Transport extends TcpTransport {
 
     @Override
     protected Netty4TcpServerChannel bind(String name, InetSocketAddress address) {
+        // 绑定端口号并启动监听
         Channel channel = serverBootstraps.get(name).bind(address).syncUninterruptibly().channel();
         Netty4TcpServerChannel esChannel = new Netty4TcpServerChannel(channel);
         channel.attr(SERVER_CHANNEL_KEY).set(esChannel);
