@@ -25,6 +25,7 @@ import static org.elasticsearch.common.recycler.Recyclers.concurrentDeque;
 import static org.elasticsearch.common.recycler.Recyclers.dequeFactory;
 import static org.elasticsearch.common.recycler.Recyclers.none;
 
+// 学习一下
 /** A recycler of fixed-size pages. */
 public class PageCacheRecycler {
 
