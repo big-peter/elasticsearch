@@ -90,6 +90,7 @@ public class InboundPipeline implements Releasable {
         }
     }
 
+    // wj 处理输入数据
     public void doHandleBytes(TcpChannel channel, ReleasableBytesReference reference) throws IOException {
         channel.getChannelStats().markAccessed(relativeTimeInMillis.getAsLong());
         statsTracker.markBytesRead(reference.length());
