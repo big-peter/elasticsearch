@@ -52,7 +52,7 @@ public abstract class AbstractRefCounted implements RefCounted {
             try {
                 closeInternal();
             } catch (Exception e) {
-                assert false : e;
+                assert false : e;  // WJ closeInternal不抛出任何异常，这个写法可以借鉴
                 throw e;
             }
             return true;
