@@ -125,6 +125,7 @@ public final class NetworkModule {
         ClusterSettings clusterSettings
     ) {
         this.settings = settings;
+        // wj plugins: XPackPlugin, VotingOnlyNodePlugin, Security, Netty4Plugin
         for (NetworkPlugin plugin : plugins) {
             Map<String, Supplier<HttpServerTransport>> httpTransportFactory = plugin.getHttpTransports(
                 settings,

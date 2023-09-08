@@ -288,6 +288,7 @@ public class PluginsUtils {
         return new ArrayList<>(sortedBundles);
     }
 
+    // wj dfs遍历
     // add the given bundle to the sorted bundles, first adding dependencies
     private static void addSortedBundle(
         PluginBundle bundle,

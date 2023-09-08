@@ -694,6 +694,7 @@ public class ActionModule extends AbstractModule {
         );
     }
 
+    // wj 添加handler
     public void initRestHandlers(Supplier<DiscoveryNodes> nodesInCluster) {
         List<AbstractCatAction> catActions = new ArrayList<>();
         Consumer<RestHandler> registerHandler = handler -> {
