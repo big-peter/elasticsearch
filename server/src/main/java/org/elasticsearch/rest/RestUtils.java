@@ -146,6 +146,7 @@ public class RestUtils {
             final char c = s.charAt(i);
             if (c == '%') {
                 i++;  // We can skip at least one char, e.g. `%%'.
+                // TODO WJ 可以提前返回
                 decodingNeeded = true;
             } else if (plusAsSpace && c == '+') {
                 decodingNeeded = true;
